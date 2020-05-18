@@ -20,15 +20,14 @@ def load_data(messages_filepath, categories_filepath):
 
 def clean_data(df):
     """
+    transforms the unstructured data to structured data and fixes the dirty data issues
     """
     # create a dataframe of the 36 individual category columns
     categories = df.categories.str.split(';',expand = True)
-    # select the first row of the categories dataframe
     row = categories.loc[0,:]
 
-    # use this row to extract a list of new column names for categories.
+    # use the first row to extract a list of new column names for categories.
     category_colnames = row.apply(lambda x : x[:-2])
-    # rename the columns of `categories`
     categories.columns = category_colnames
 
     for column in categories:
@@ -49,6 +48,9 @@ def clean_data(df):
 
 
 def save_data(df, database_filename):
+  '''
+  saves the clean data to the database
+  '''
     engine = create_engine('sqlite:///database_filename.db')
     df.to_sql('database_filename', engine, index=False)
 
