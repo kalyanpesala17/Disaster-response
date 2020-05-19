@@ -5,16 +5,16 @@ from sqlalchemy import create_engine
 
 
 def load_data(messages_filepath, categories_filepath):
-  """
-  Loads the data files and merges to one data frame
+    """
+    Loads the data files and merges to one data frame
 
-  Arguments:
-  messages_filepath : messages data file path
-  categories_filepath : categories data file path
-  """
+    Arguments:
+    messages_filepath : messages data file path
+    categories_filepath : categories data file path
+    """
     messages = pd.read_csv(messages_filepath)
     categories = pd.read_csv(categories_filepath)
-    df = pd.merge(messages.categories,on = 'id')
+    df = pd.merge(messages,categories,on = 'id')
 
     return df
 
@@ -31,11 +31,11 @@ def clean_data(df):
     categories.columns = category_colnames
 
     for column in categories:
-    # convert category values to just numbers 0 or 1 by slicing the string with last character
-    categories[column] = categories[column].str[-1]
-    
-    # convert column from string to numeric
-    categories[column] = pd.to_numeric(categories[column])
+        # convert category values to just numbers 0 or 1 by slicing the string with last character
+        categories[column] = categories[column].str[-1]
+
+        # convert column from string to numeric
+        categories[column] = pd.to_numeric(categories[column])
     #replace 2's with 1
     categories = categories.replace(2,1)
 
@@ -48,11 +48,11 @@ def clean_data(df):
 
 
 def save_data(df, database_filename):
-  '''
-  saves the clean data to the database
-  '''
-    engine = create_engine('sqlite:///database_filename.db')
-    df.to_sql('database_filename', engine, index=False)
+    '''
+    saves the clean data to the database
+    '''
+    engine = create_engine('sqlite:///'+database_filename)
+    df.to_sql(database_filename.split('/')[1].split('.')[0], engine, index=False)
 
 
 def main():
