@@ -27,4 +27,7 @@ For running this project, the most important library is Python version of Anacon
 4. app/run.py: To start the Python server for the web app and render visualizations.
 
 ### Results<a name="results"></a>
-The main observations of the trained classifier can be seen by running this application.
+The main observations of the trained classifier can be seen by running this application. below are the screenshots of webapp.
+![Images of web app](https://github.com/kalyanpesala17/Disaster-response/blob/master/Screenshot%20(205).png)
+![Images of web app](https://github.com/kalyanpesala17/Disaster-response/blob/master/Screenshot%20(206).png)
+
