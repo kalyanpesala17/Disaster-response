@@ -1,4 +1,6 @@
-# Disaster-response
+# Project Motivation
+In the times of uncertainity like disaster we get a lot of messages for help from the various sources(news,social media, direct responses) to effectively distribute the resources, we analyze the disaster data from Figure Eight to build a model for an API that classifies disaster messages.it will include a web app where an emergency worker can input a new message and get classification results in several categories to distribute the resources where it needed the most. The web app will also display visualizations of the data.
+
 ## Table of Contents
 1. [Installation](#installation)
 2. [Instructions](#instructions)
